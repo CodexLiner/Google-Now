@@ -28,7 +28,11 @@ class MainActivity : ComponentActivity() {
 
             if (textToSpeech.isSpeaking) textToSpeech.stop() else speak(text.text)
         }
-
+        binding.dialogButton.setOnClickListener {
+            if (binding.textInput.text.isNotEmpty()){
+                speak(binding.textInput.text.toString())
+            }
+        }
         findViewById<RecyclerView>(R.id.text_rv).apply {
             layoutManager = LinearLayoutManager(this@MainActivity)
             adapter = this@MainActivity.adapter
